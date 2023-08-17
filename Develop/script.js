@@ -44,13 +44,15 @@ $(document).ready(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
-
-// TODO: Add code to get any user input that was saved in localStorage and set
-// the values of the corresponding textarea elements. HINT: How can the id
-// attribute of each time-block be used to do this?
-//
-
+  function getUserInput() {
+    var x = $(".time-block");
+    for (i = 0; i < x.length; i++) {
+      var hourDiv = $(x[i]).attr("id");
+      var localStorageValue = localStorage.getItem(hourDiv)
+      $("#" + hourDiv + " .description").val(localStorageValue);
+    }
+  }
+  getUserInput();
 // TODO: Add code to display the current date in the header of the page.
 var currentDay = dayjs().format("MMMM D, YYYY");
 $("#currentDay").text(currentDay);
